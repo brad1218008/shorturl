@@ -1,12 +1,15 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import shortRouter from "./src/routes/short.route";
+import shortRouter from "./src/routes/short";
+import { logger } from './src/utils/logger';
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
+
+logger.info("aaa");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

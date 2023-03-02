@@ -1,5 +1,5 @@
 import express from "express";
-import {get, getById, create, update, remove} from '../controllers/short.controller';
+import {get, getById, create, update, remove} from '../controllers/short';
 const shortRouter = express.Router();
 
 shortRouter.get('/', get);
