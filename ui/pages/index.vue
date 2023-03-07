@@ -9,18 +9,23 @@
           icon-right="close-circle"
           icon-right-clickable
           @icon-right-click="clearUrl"
+          v-model="url"
           rounded>
         </b-input>
       </b-field>
     </div>
     <div class="buttons is-centered">
-      <b-button icon-left="zoom-in">
+      <b-button
+        icon-left="swap-vertical-bold"
+        @click="generateShortUrl">
         Generate Url
       </b-button>
     </div>
     <div class="buttons is-centered">
-      <b-button icon-left="content-paste">
-        Paste From Clipboard And Generate Url
+      <b-button
+        icon-left="content-paste"
+        @click="pasteAndGenerate">
+        Paste And Generate Url
       </b-button>
     </div>
     <div class="block">
@@ -31,6 +36,7 @@
           icon-right="content-copy"
           icon-right-clickable
           @icon-right-click="copyShortUrl"
+          v-model="shortUrl"
           rounded>
         </b-input>
       </b-field>
@@ -46,17 +52,25 @@ export default {
   components: {
     Card
   },
-  data: {
-    url: '',
-    shortUrl: ''
+  data() {
+    return {
+      url: '',
+      shortUrl: ''
+    }
   },
   methods: {
     clearUrl() {
       this.url = '';
     },
-    copyShortUrl() {
-      this.email = '';
-      alert('Email cleared!')
+    async copyShortUrl() {
+      await navigator.clipboard.writeText(this.shortUrl);
+    },
+    generateShortUrl() {
+      this.shortUrl = 'https://test';
+    },
+    async pasteAndGenerate() {
+      this.url = await navigator.clipboard.readText();
+      this.generateShortUrl();
     }
   }
 }
