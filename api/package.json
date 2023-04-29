@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
-    "start:prod": "npm run build && node ./dist/server.js",
+    "start": "set NODE_ENV=dev && ts-node index.ts",
+    "start:linux": "NODE_ENV=dev && ts-node index.ts",
+    "start:prod": "npm run build && node ./dist/index.js",
     "build": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:unit": "set ENV_FILE=/.env.test && jest --coverage",
+    "test:unit:linux": "ENV_FILE=/.env.test && jest --coverage",
+    "test:watch": "jest watch"
   },
   "keywords": [],
   "author": "Brad Fang",
@@ -16,18 +19,24 @@
     "@types/express": "^4.17.17",
     "@types/node": "^18.14.1",
     "@types/pino": "^7.0.5",
+    "@types/supertest": "^2.0.12",
     "concurrently": "^7.6.0",
+    "dotenv": "^16.0.3",
     "nodemon": "^2.0.20",
-    "sequelize-cli": "^6.6.0",
+    "supertest": "^6.3.3",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@types/jest": "^29.5.1",
     "body-parser": "^1.20.2",
-    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jest": "^29.5.0",
+    "pg": "^8.10.0",
     "pino": "^8.11.0",
-    "sequelize": "^6.29.0",
-    "sqlite3": "^5.1.4"
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.1.4",
+    "ts-jest": "^29.1.0",
+    "typeorm": "^0.3.15"
   }
 }

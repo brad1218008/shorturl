@@ -1,11 +1,10 @@
 import express from "express";
-import {get, getById, create, update, remove} from '../controllers/short';
+import {ShortController} from '../controllers/short';
 const shortRouter = express.Router();
+const controller = new ShortController();
 
-shortRouter.get('/', get);
-shortRouter.get('/:id', getById);
-shortRouter.post('/', create);
-shortRouter.put('/', update);
-shortRouter.delete('/:id', remove);
+shortRouter.get('/:id', controller.getById);
+shortRouter.post('/', controller.create);
+shortRouter.delete('/:id', controller.remove);
 
 export = shortRouter;

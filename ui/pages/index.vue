@@ -21,13 +21,6 @@
         Generate Url
       </b-button>
     </div>
-    <div class="buttons is-centered">
-      <b-button
-        icon-left="content-paste"
-        @click="pasteAndGenerate">
-        Paste And Generate Url
-      </b-button>
-    </div>
     <div class="block">
       <b-field>
         <b-input
@@ -65,12 +58,12 @@ export default {
     async copyShortUrl() {
       await navigator.clipboard.writeText(this.shortUrl);
     },
-    generateShortUrl() {
+    async generateShortUrl() {
+      // if input is empty paste from clipboard
+      if(!this.url) {
+        this.url = await navigator.clipboard.readText();
+      }
       this.shortUrl = 'https://test';
-    },
-    async pasteAndGenerate() {
-      this.url = await navigator.clipboard.readText();
-      this.generateShortUrl();
     }
   }
 }
