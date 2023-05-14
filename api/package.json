@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_ENV=dev && ts-node index.ts",
-    "start:linux": "NODE_ENV=dev && ts-node index.ts",
+    "start:mac": "export NODE_ENV=dev && ts-node index.ts",
     "start:prod": "npm run build && node ./dist/index.js",
     "build": "npx tsc",
     "test:unit": "set ENV_FILE=/.env.test && jest --coverage",

@@ -18,8 +18,6 @@ export const createServer = async (): Promise<Express> => {
   const app: Express = express();
   const port = process.env.PORT;
 
-  console.log(process.env);
-
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true,

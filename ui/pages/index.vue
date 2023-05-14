@@ -39,6 +39,7 @@
 
 <script>
 import Card from '~/components/Card'
+import axios from 'axios'
 
 export default {
   name: 'IndexPage',
@@ -63,7 +64,12 @@ export default {
       if(!this.url) {
         this.url = await navigator.clipboard.readText();
       }
-      this.shortUrl = 'https://test';
+
+      const res = await axios.post('/api/short', {
+        originUrl: this.url
+      })
+
+      this.shortUrl = `${window.location.origin}/s/${res.data.id}`;
     }
   }
 }
