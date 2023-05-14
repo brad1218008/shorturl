@@ -1,4 +1,4 @@
-export const generateId = async (length: number = 6) => {
+export const generateId = async (length: number = 4) => {
   let result = '';
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let counter = 0;
