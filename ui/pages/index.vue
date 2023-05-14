@@ -69,7 +69,7 @@ export default {
         originUrl: this.url
       })
 
-      this.shortUrl = `${window.location.origin}/s/${res.data.id}`;
+      this.shortUrl = `${window.location.href}/s/${res.data.id}`;
     }
   }
 }
